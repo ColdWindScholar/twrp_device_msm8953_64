@@ -57,5 +57,9 @@ fi
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false "${CLEAN_VENDOR}"
 
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" "${KANG}" --section "${SECTION}"
-
+if [ -f "${MY_DIR}/prebuilt/kernel.zip" ]; then
+echo "Extracting kernel..."
+unzip -p "${MY_DIR}/prebuilt/kernel.zip" kernel > "${MY_DIR}/prebuilt/kernel"
+echo "Done."
+fi
 "${MY_DIR}/setup-makefiles.sh"
